@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkyf.invoking.dao.BaseMapper" >
+
+  <select id="acquit" resultType="java.util.Map" statementType="PREPARED">
+    select  *
+    from ${function}(
+    <foreach collection="paramList" item="item"  separator="," >
+      #{item}
+    </foreach>
+
+    );/*函数调用*/
+
+  </select>
+  <select id="append" resultType="java.lang.Integer">
+
+  </select>
+  <select id="loadby" resultType="java.util.Map">
+    select  *
+    from ${function}(
+    <foreach collection="paramList" item="item"  separator="," >
+      #{item}
+    </foreach>
+
+
+    );/*函数调用*/
+  </select>
+
+
+
+
+  <!--<select id="loadby" resultType="java.util.Map">-->
+    <!--select  *-->
+    <!--from ${function}(-->
+    <!--<foreach collection="sqlmap.keys" item="key"  separator="," >-->
+      <!--#{sqlmap[${key}]}-->
+    <!--</foreach>-->
+
+
+    <!--);/*函数调用*/-->
+  <!--</select>-->
+</mapper>

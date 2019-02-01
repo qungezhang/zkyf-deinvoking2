@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkyf.invoking.dao.EmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.zkyf.invoking.model.Employee" >
+    <id column="emp_no" property="empNo" jdbcType="INTEGER" />
+    <result column="emp_uuid" property="empUuid" jdbcType="VARCHAR" />
+    <result column="crt_stamp" property="crtStamp" jdbcType="TIMESTAMP" />
+    <result column="crt_no" property="crtNo" jdbcType="INTEGER" />
+    <result column="opr_stamp" property="oprStamp" jdbcType="TIMESTAMP" />
+    <result column="opr_no" property="oprNo" jdbcType="INTEGER" />
+    <result column="lst_stamp" property="lstStamp" jdbcType="TIMESTAMP" />
+    <result column="emp_degree" property="empDegree" jdbcType="INTEGER" />
+    <result column="emp_relation" property="empRelation" jdbcType="INTEGER" />
+    <result column="emp_status" property="empStatus" jdbcType="INTEGER" />
+    <result column="emp_state" property="empState" jdbcType="INTEGER" />
+    <result column="emp_kind" property="empKind" jdbcType="INTEGER" />
+    <result column="emp_uid" property="empUid" jdbcType="VARCHAR" />
+    <result column="emp_pwd" property="empPwd" jdbcType="VARCHAR" />
+    <result column="emp_fullname" property="empFullname" jdbcType="VARCHAR" />
+    <result column="emp_gender" property="empGender" jdbcType="INTEGER" />
+    <result column="emp_birthday" property="empBirthday" jdbcType="DATE" />
+    <result column="emp_nation" property="empNation" jdbcType="VARCHAR" />
+    <result column="emp_birthplace" property="empBirthplace" jdbcType="VARCHAR" />
+    <result column="emp_idtype" property="empIdtype" jdbcType="INTEGER" />
+    <result column="emp_idcard" property="empIdcard" jdbcType="VARCHAR" />
+    <result column="emp_idstartdate" property="empIdstartdate" jdbcType="VARCHAR" />
+    <result column="emp_idenddate" property="empIdenddate" jdbcType="VARCHAR" />
+    <result column="emp_idaddress" property="empIdaddress" jdbcType="VARCHAR" />
+    <result column="adv_kinds" property="advKinds" jdbcType="INTEGER" />
+    <result column="emp_educational" property="empEducational" jdbcType="INTEGER" />
+    <result column="emp_politicalstatus" property="empPoliticalstatus" jdbcType="INTEGER" />
+    <result column="emp_criticaldiseases" property="empCriticaldiseases" jdbcType="INTEGER" />
+    <result column="emp_mobile" property="empMobile" jdbcType="VARCHAR" />
+    <result column="emp_email" property="empEmail" jdbcType="VARCHAR" />
+    <result column="emp_headerurl" property="empHeaderurl" jdbcType="VARCHAR" />
+    <result column="emp_homeaddress" property="empHomeaddress" jdbcType="VARCHAR" />
+    <result column="emp_startdate" property="empStartdate" jdbcType="DATE" />
+    <result column="emp_enddate" property="empEnddate" jdbcType="DATE" />
+    <result column="emp_startworkdate" property="empStartworkdate" jdbcType="DATE" />
+    <result column="emp_rankslevel" property="empRankslevel" jdbcType="INTEGER" />
+    <result column="emp_ranks" property="empRanks" jdbcType="VARCHAR" />
+    <result column="emp_level" property="empLevel" jdbcType="INTEGER" />
+    <result column="emp_orgno" property="empOrgno" jdbcType="INTEGER" />
+    <result column="emp_committee" property="empCommittee" jdbcType="INTEGER" />
+    <result column="emp_illness" property="empIllness" jdbcType="INTEGER" />
+    <result column="emp_dept" property="empDept" jdbcType="VARCHAR" />
+    <result column="emp_duty" property="empDuty" jdbcType="VARCHAR" />
+    <result column="emp_wageid" property="empWageid" jdbcType="VARCHAR" />
+    <result column="emp_socialsecurityid" property="empSocialsecurityid" jdbcType="VARCHAR" />
+    <result column="emp_insurance" property="empInsurance" jdbcType="VARCHAR" />
+    <result column="emp_contracturl" property="empContracturl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    emp_no, emp_uuid, crt_stamp, crt_no, opr_stamp, opr_no, lst_stamp, emp_degree, emp_relation, 
+    emp_status, emp_state, emp_kind, emp_uid, emp_pwd, emp_fullname, emp_gender, emp_birthday, 
+    emp_nation, emp_birthplace, emp_idtype, emp_idcard, emp_idstartdate, emp_idenddate, 
+    emp_idaddress, adv_kinds, emp_educational, emp_politicalstatus, emp_criticaldiseases, 
+    emp_mobile, emp_email, emp_headerurl, emp_homeaddress, emp_startdate, emp_enddate, 
+    emp_startworkdate, emp_rankslevel, emp_ranks, emp_level, emp_orgno, emp_committee, 
+    emp_illness, emp_dept, emp_duty, emp_wageid, emp_socialsecurityid, emp_insurance, 
+    emp_contracturl
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_employee
+    where emp_no = #{empNo,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_employee
+    where emp_no = #{empNo,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zkyf.invoking.model.Employee" >
+    insert into t_employee (emp_no, emp_uuid, crt_stamp, 
+      crt_no, opr_stamp, opr_no, 
+      lst_stamp, emp_degree, emp_relation, 
+      emp_status, emp_state, emp_kind, 
+      emp_uid, emp_pwd, emp_fullname, 
+      emp_gender, emp_birthday, emp_nation, 
+      emp_birthplace, emp_idtype, emp_idcard, 
+      emp_idstartdate, emp_idenddate, emp_idaddress, 
+      adv_kinds, emp_educational, emp_politicalstatus, 
+      emp_criticaldiseases, emp_mobile, emp_email, 
+      emp_headerurl, emp_homeaddress, emp_startdate, 
+      emp_enddate, emp_startworkdate, emp_rankslevel, 
+      emp_ranks, emp_level, emp_orgno, 
+      emp_committee, emp_illness, emp_dept, 
+      emp_duty, emp_wageid, emp_socialsecurityid, 
+      emp_insurance, emp_contracturl)
+    values (#{empNo,jdbcType=INTEGER}, #{empUuid,jdbcType=VARCHAR}, #{crtStamp,jdbcType=TIMESTAMP}, 
+      #{crtNo,jdbcType=INTEGER}, #{oprStamp,jdbcType=TIMESTAMP}, #{oprNo,jdbcType=INTEGER}, 
+      #{lstStamp,jdbcType=TIMESTAMP}, #{empDegree,jdbcType=INTEGER}, #{empRelation,jdbcType=INTEGER}, 
+      #{empStatus,jdbcType=INTEGER}, #{empState,jdbcType=INTEGER}, #{empKind,jdbcType=INTEGER}, 
+      #{empUid,jdbcType=VARCHAR}, #{empPwd,jdbcType=VARCHAR}, #{empFullname,jdbcType=VARCHAR}, 
+      #{empGender,jdbcType=INTEGER}, #{empBirthday,jdbcType=DATE}, #{empNation,jdbcType=VARCHAR}, 
+      #{empBirthplace,jdbcType=VARCHAR}, #{empIdtype,jdbcType=INTEGER}, #{empIdcard,jdbcType=VARCHAR}, 
+      #{empIdstartdate,jdbcType=VARCHAR}, #{empIdenddate,jdbcType=VARCHAR}, #{empIdaddress,jdbcType=VARCHAR}, 
+      #{advKinds,jdbcType=INTEGER}, #{empEducational,jdbcType=INTEGER}, #{empPoliticalstatus,jdbcType=INTEGER}, 
+      #{empCriticaldiseases,jdbcType=INTEGER}, #{empMobile,jdbcType=VARCHAR}, #{empEmail,jdbcType=VARCHAR}, 
+      #{empHeaderurl,jdbcType=VARCHAR}, #{empHomeaddress,jdbcType=VARCHAR}, #{empStartdate,jdbcType=DATE}, 
+      #{empEnddate,jdbcType=DATE}, #{empStartworkdate,jdbcType=DATE}, #{empRankslevel,jdbcType=INTEGER}, 
+      #{empRanks,jdbcType=VARCHAR}, #{empLevel,jdbcType=INTEGER}, #{empOrgno,jdbcType=INTEGER}, 
+      #{empCommittee,jdbcType=INTEGER}, #{empIllness,jdbcType=INTEGER}, #{empDept,jdbcType=VARCHAR}, 
+      #{empDuty,jdbcType=VARCHAR}, #{empWageid,jdbcType=VARCHAR}, #{empSocialsecurityid,jdbcType=VARCHAR}, 
+      #{empInsurance,jdbcType=VARCHAR}, #{empContracturl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zkyf.invoking.model.Employee" >
+    insert into t_employee
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="empNo != null" >
+        emp_no,
+      </if>
+      <if test="empUuid != null" >
+        emp_uuid,
+      </if>
+      <if test="crtStamp != null" >
+        crt_stamp,
+      </if>
+      <if test="crtNo != null" >
+        crt_no,
+      </if>
+      <if test="oprStamp != null" >
+        opr_stamp,
+      </if>
+      <if test="oprNo != null" >
+        opr_no,
+      </if>
+      <if test="lstStamp != null" >
+        lst_stamp,
+      </if>
+      <if test="empDegree != null" >
+        emp_degree,
+      </if>
+      <if test="empRelation != null" >
+        emp_relation,
+      </if>
+      <if test="empStatus != null" >
+        emp_status,
+      </if>
+      <if test="empState != null" >
+        emp_state,
+      </if>
+      <if test="empKind != null" >
+        emp_kind,
+      </if>
+      <if test="empUid != null" >
+        emp_uid,
+      </if>
+      <if test="empPwd != null" >
+        emp_pwd,
+      </if>
+      <if test="empFullname != null" >
+        emp_fullname,
+      </if>
+      <if test="empGender != null" >
+        emp_gender,
+      </if>
+      <if test="empBirthday != null" >
+        emp_birthday,
+      </if>
+      <if test="empNation != null" >
+        emp_nation,
+      </if>
+      <if test="empBirthplace != null" >
+        emp_birthplace,
+      </if>
+      <if test="empIdtype != null" >
+        emp_idtype,
+      </if>
+      <if test="empIdcard != null" >
+        emp_idcard,
+      </if>
+      <if test="empIdstartdate != null" >
+        emp_idstartdate,
+      </if>
+      <if test="empIdenddate != null" >
+        emp_idenddate,
+      </if>
+      <if test="empIdaddress != null" >
+        emp_idaddress,
+      </if>
+      <if test="advKinds != null" >
+        adv_kinds,
+      </if>
+      <if test="empEducational != null" >
+        emp_educational,
+      </if>
+      <if test="empPoliticalstatus != null" >
+        emp_politicalstatus,
+      </if>
+      <if test="empCriticaldiseases != null" >
+        emp_criticaldiseases,
+      </if>
+      <if test="empMobile != null" >
+        emp_mobile,
+      </if>
+      <if test="empEmail != null" >
+        emp_email,
+      </if>
+      <if test="empHeaderurl != null" >
+        emp_headerurl,
+      </if>
+      <if test="empHomeaddress != null" >
+        emp_homeaddress,
+      </if>
+      <if test="empStartdate != null" >
+        emp_startdate,
+      </if>
+      <if test="empEnddate != null" >
+        emp_enddate,
+      </if>
+      <if test="empStartworkdate != null" >
+        emp_startworkdate,
+      </if>
+      <if test="empRankslevel != null" >
+        emp_rankslevel,
+      </if>
+      <if test="empRanks != null" >
+        emp_ranks,
+      </if>
+      <if test="empLevel != null" >
+        emp_level,
+      </if>
+      <if test="empOrgno != null" >
+        emp_orgno,
+      </if>
+      <if test="empCommittee != null" >
+        emp_committee,
+      </if>
+      <if test="empIllness != null" >
+        emp_illness,
+      </if>
+      <if test="empDept != null" >
+        emp_dept,
+      </if>
+      <if test="empDuty != null" >
+        emp_duty,
+      </if>
+      <if test="empWageid != null" >
+        emp_wageid,
+      </if>
+      <if test="empSocialsecurityid != null" >
+        emp_socialsecurityid,
+      </if>
+      <if test="empInsurance != null" >
+        emp_insurance,
+      </if>
+      <if test="empContracturl != null" >
+        emp_contracturl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="empNo != null" >
+        #{empNo,jdbcType=INTEGER},
+      </if>
+      <if test="empUuid != null" >
+        #{empUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="crtStamp != null" >
+        #{crtStamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtNo != null" >
+        #{crtNo,jdbcType=INTEGER},
+      </if>
+      <if test="oprStamp != null" >
+        #{oprStamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oprNo != null" >
+        #{oprNo,jdbcType=INTEGER},
+      </if>
+      <if test="lstStamp != null" >
+        #{lstStamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="empDegree != null" >
+        #{empDegree,jdbcType=INTEGER},
+      </if>
+      <if test="empRelation != null" >
+        #{empRelation,jdbcType=INTEGER},
+      </if>
+      <if test="empStatus != null" >
+        #{empStatus,jdbcType=INTEGER},
+      </if>
+      <if test="empState != null" >
+        #{empState,jdbcType=INTEGER},
+      </if>
+      <if test="empKind != null" >
+        #{empKind,jdbcType=INTEGER},
+      </if>
+      <if test="empUid != null" >
+        #{empUid,jdbcType=VARCHAR},
+      </if>
+      <if test="empPwd != null" >
+        #{empPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="empFullname != null" >
+        #{empFullname,jdbcType=VARCHAR},
+      </if>
+      <if test="empGender != null" >
+        #{empGender,jdbcType=INTEGER},
+      </if>
+      <if test="empBirthday != null" >
+        #{empBirthday,jdbcType=DATE},
+      </if>
+      <if test="empNation != null" >
+        #{empNation,jdbcType=VARCHAR},
+      </if>
+      <if test="empBirthplace != null" >
+        #{empBirthplace,jdbcType=VARCHAR},
+      </if>
+      <if test="empIdtype != null" >
+        #{empIdtype,jdbcType=INTEGER},
+      </if>
+      <if test="empIdcard != null" >
+        #{empIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="empIdstartdate != null" >
+        #{empIdstartdate,jdbcType=VARCHAR},
+      </if>
+      <if test="empIdenddate != null" >
+        #{empIdenddate,jdbcType=VARCHAR},
+      </if>
+      <if test="empIdaddress != null" >
+        #{empIdaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="advKinds != null" >
+        #{advKinds,jdbcType=INTEGER},
+      </if>
+      <if test="empEducational != null" >
+        #{empEducational,jdbcType=INTEGER},
+      </if>
+      <if test="empPoliticalstatus != null" >
+        #{empPoliticalstatus,jdbcType=INTEGER},
+      </if>
+      <if test="empCriticaldiseases != null" >
+        #{empCriticaldiseases,jdbcType=INTEGER},
+      </if>
+      <if test="empMobile != null" >
+        #{empMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="empEmail != null" >
+        #{empEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="empHeaderurl != null" >
+        #{empHeaderurl,jdbcType=VARCHAR},
+      </if>
+      <if test="empHomeaddress != null" >
+        #{empHomeaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="empStartdate != null" >
+        #{empStartdate,jdbcType=DATE},
+      </if>
+      <if test="empEnddate != null" >
+        #{empEnddate,jdbcType=DATE},
+      </if>
+      <if test="empStartworkdate != null" >
+        #{empStartworkdate,jdbcType=DATE},
+      </if>
+      <if test="empRankslevel != null" >
+        #{empRankslevel,jdbcType=INTEGER},
+      </if>
+      <if test="empRanks != null" >
+        #{empRanks,jdbcType=VARCHAR},
+      </if>
+      <if test="empLevel != null" >
+        #{empLevel,jdbcType=INTEGER},
+      </if>
+      <if test="empOrgno != null" >
+        #{empOrgno,jdbcType=INTEGER},
+      </if>
+      <if test="empCommittee != null" >
+        #{empCommittee,jdbcType=INTEGER},
+      </if>
+      <if test="empIllness != null" >
+        #{empIllness,jdbcType=INTEGER},
+      </if>
+      <if test="empDept != null" >
+        #{empDept,jdbcType=VARCHAR},
+      </if>
+      <if test="empDuty != null" >
+        #{empDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="empWageid != null" >
+        #{empWageid,jdbcType=VARCHAR},
+      </if>
+      <if test="empSocialsecurityid != null" >
+        #{empSocialsecurityid,jdbcType=VARCHAR},
+      </if>
+      <if test="empInsurance != null" >
+        #{empInsurance,jdbcType=VARCHAR},
+      </if>
+      <if test="empContracturl != null" >
+        #{empContracturl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zkyf.invoking.model.Employee" >
+    update t_employee
+    <set >
+      <if test="empUuid != null" >
+        emp_uuid = #{empUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="crtStamp != null" >
+        crt_stamp = #{crtStamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtNo != null" >
+        crt_no = #{crtNo,jdbcType=INTEGER},
+      </if>
+      <if test="oprStamp != null" >
+        opr_stamp = #{oprStamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oprNo != null" >
+        opr_no = #{oprNo,jdbcType=INTEGER},
+      </if>
+      <if test="lstStamp != null" >
+        lst_stamp = #{lstStamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="empDegree != null" >
+        emp_degree = #{empDegree,jdbcType=INTEGER},
+      </if>
+      <if test="empRelation != null" >
+        emp_relation = #{empRelation,jdbcType=INTEGER},
+      </if>
+      <if test="empStatus != null" >
+        emp_status = #{empStatus,jdbcType=INTEGER},
+      </if>
+      <if test="empState != null" >
+        emp_state = #{empState,jdbcType=INTEGER},
+      </if>
+      <if test="empKind != null" >
+        emp_kind = #{empKind,jdbcType=INTEGER},
+      </if>
+      <if test="empUid != null" >
+        emp_uid = #{empUid,jdbcType=VARCHAR},
+      </if>
+      <if test="empPwd != null" >
+        emp_pwd = #{empPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="empFullname != null" >
+        emp_fullname = #{empFullname,jdbcType=VARCHAR},
+      </if>
+      <if test="empGender != null" >
+        emp_gender = #{empGender,jdbcType=INTEGER},
+      </if>
+      <if test="empBirthday != null" >
+        emp_birthday = #{empBirthday,jdbcType=DATE},
+      </if>
+      <if test="empNation != null" >
+        emp_nation = #{empNation,jdbcType=VARCHAR},
+      </if>
+      <if test="empBirthplace != null" >
+        emp_birthplace = #{empBirthplace,jdbcType=VARCHAR},
+      </if>
+      <if test="empIdtype != null" >
+        emp_idtype = #{empIdtype,jdbcType=INTEGER},
+      </if>
+      <if test="empIdcard != null" >
+        emp_idcard = #{empIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="empIdstartdate != null" >
+        emp_idstartdate = #{empIdstartdate,jdbcType=VARCHAR},
+      </if>
+      <if test="empIdenddate != null" >
+        emp_idenddate = #{empIdenddate,jdbcType=VARCHAR},
+      </if>
+      <if test="empIdaddress != null" >
+        emp_idaddress = #{empIdaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="advKinds != null" >
+        adv_kinds = #{advKinds,jdbcType=INTEGER},
+      </if>
+      <if test="empEducational != null" >
+        emp_educational = #{empEducational,jdbcType=INTEGER},
+      </if>
+      <if test="empPoliticalstatus != null" >
+        emp_politicalstatus = #{empPoliticalstatus,jdbcType=INTEGER},
+      </if>
+      <if test="empCriticaldiseases != null" >
+        emp_criticaldiseases = #{empCriticaldiseases,jdbcType=INTEGER},
+      </if>
+      <if test="empMobile != null" >
+        emp_mobile = #{empMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="empEmail != null" >
+        emp_email = #{empEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="empHeaderurl != null" >
+        emp_headerurl = #{empHeaderurl,jdbcType=VARCHAR},
+      </if>
+      <if test="empHomeaddress != null" >
+        emp_homeaddress = #{empHomeaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="empStartdate != null" >
+        emp_startdate = #{empStartdate,jdbcType=DATE},
+      </if>
+      <if test="empEnddate != null" >
+        emp_enddate = #{empEnddate,jdbcType=DATE},
+      </if>
+      <if test="empStartworkdate != null" >
+        emp_startworkdate = #{empStartworkdate,jdbcType=DATE},
+      </if>
+      <if test="empRankslevel != null" >
+        emp_rankslevel = #{empRankslevel,jdbcType=INTEGER},
+      </if>
+      <if test="empRanks != null" >
+        emp_ranks = #{empRanks,jdbcType=VARCHAR},
+      </if>
+      <if test="empLevel != null" >
+        emp_level = #{empLevel,jdbcType=INTEGER},
+      </if>
+      <if test="empOrgno != null" >
+        emp_orgno = #{empOrgno,jdbcType=INTEGER},
+      </if>
+      <if test="empCommittee != null" >
+        emp_committee = #{empCommittee,jdbcType=INTEGER},
+      </if>
+      <if test="empIllness != null" >
+        emp_illness = #{empIllness,jdbcType=INTEGER},
+      </if>
+      <if test="empDept != null" >
+        emp_dept = #{empDept,jdbcType=VARCHAR},
+      </if>
+      <if test="empDuty != null" >
+        emp_duty = #{empDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="empWageid != null" >
+        emp_wageid = #{empWageid,jdbcType=VARCHAR},
+      </if>
+      <if test="empSocialsecurityid != null" >
+        emp_socialsecurityid = #{empSocialsecurityid,jdbcType=VARCHAR},
+      </if>
+      <if test="empInsurance != null" >
+        emp_insurance = #{empInsurance,jdbcType=VARCHAR},
+      </if>
+      <if test="empContracturl != null" >
+        emp_contracturl = #{empContracturl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where emp_no = #{empNo,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zkyf.invoking.model.Employee" >
+    update t_employee
+    set emp_uuid = #{empUuid,jdbcType=VARCHAR},
+      crt_stamp = #{crtStamp,jdbcType=TIMESTAMP},
+      crt_no = #{crtNo,jdbcType=INTEGER},
+      opr_stamp = #{oprStamp,jdbcType=TIMESTAMP},
+      opr_no = #{oprNo,jdbcType=INTEGER},
+      lst_stamp = #{lstStamp,jdbcType=TIMESTAMP},
+      emp_degree = #{empDegree,jdbcType=INTEGER},
+      emp_relation = #{empRelation,jdbcType=INTEGER},
+      emp_status = #{empStatus,jdbcType=INTEGER},
+      emp_state = #{empState,jdbcType=INTEGER},
+      emp_kind = #{empKind,jdbcType=INTEGER},
+      emp_uid = #{empUid,jdbcType=VARCHAR},
+      emp_pwd = #{empPwd,jdbcType=VARCHAR},
+      emp_fullname = #{empFullname,jdbcType=VARCHAR},
+      emp_gender = #{empGender,jdbcType=INTEGER},
+      emp_birthday = #{empBirthday,jdbcType=DATE},
+      emp_nation = #{empNation,jdbcType=VARCHAR},
+      emp_birthplace = #{empBirthplace,jdbcType=VARCHAR},
+      emp_idtype = #{empIdtype,jdbcType=INTEGER},
+      emp_idcard = #{empIdcard,jdbcType=VARCHAR},
+      emp_idstartdate = #{empIdstartdate,jdbcType=VARCHAR},
+      emp_idenddate = #{empIdenddate,jdbcType=VARCHAR},
+      emp_idaddress = #{empIdaddress,jdbcType=VARCHAR},
+      adv_kinds = #{advKinds,jdbcType=INTEGER},
+      emp_educational = #{empEducational,jdbcType=INTEGER},
+      emp_politicalstatus = #{empPoliticalstatus,jdbcType=INTEGER},
+      emp_criticaldiseases = #{empCriticaldiseases,jdbcType=INTEGER},
+      emp_mobile = #{empMobile,jdbcType=VARCHAR},
+      emp_email = #{empEmail,jdbcType=VARCHAR},
+      emp_headerurl = #{empHeaderurl,jdbcType=VARCHAR},
+      emp_homeaddress = #{empHomeaddress,jdbcType=VARCHAR},
+      emp_startdate = #{empStartdate,jdbcType=DATE},
+      emp_enddate = #{empEnddate,jdbcType=DATE},
+      emp_startworkdate = #{empStartworkdate,jdbcType=DATE},
+      emp_rankslevel = #{empRankslevel,jdbcType=INTEGER},
+      emp_ranks = #{empRanks,jdbcType=VARCHAR},
+      emp_level = #{empLevel,jdbcType=INTEGER},
+      emp_orgno = #{empOrgno,jdbcType=INTEGER},
+      emp_committee = #{empCommittee,jdbcType=INTEGER},
+      emp_illness = #{empIllness,jdbcType=INTEGER},
+      emp_dept = #{empDept,jdbcType=VARCHAR},
+      emp_duty = #{empDuty,jdbcType=VARCHAR},
+      emp_wageid = #{empWageid,jdbcType=VARCHAR},
+      emp_socialsecurityid = #{empSocialsecurityid,jdbcType=VARCHAR},
+      emp_insurance = #{empInsurance,jdbcType=VARCHAR},
+      emp_contracturl = #{empContracturl,jdbcType=VARCHAR}
+    where emp_no = #{empNo,jdbcType=INTEGER}
+  </update>
+  <select id="getOne" resultType="java.util.Map">
+    select  *
+    from worker_acquit(1,#{empNo});/*函数调用*/
+
+
+  </select>
+</mapper>

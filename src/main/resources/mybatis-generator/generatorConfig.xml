@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--数据库驱动-->
+    <classPathEntry    location="D:\qunge\zkyf-deinvoking\src\main\resources\mybatis-generator\postgresql-42.2.5.jar"/>
+    <context id="DB2Tables"    targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--数据库链接地址账号密码-->
+        <jdbcConnection driverClass="org.postgresql.Driver" connectionURL="jdbc:postgresql://222.184.237.178:9000/zkyf2" userId="admin" password="20181126(AT)zkyf">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!--生成Model类存放位置-->
+        <javaModelGenerator targetPackage="com.example.springbootdemo0117.model" targetProject="src">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--生成映射文件存放位置-->
+        <sqlMapGenerator targetPackage="main.resources.mapper" targetProject="src">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--生成Dao类存放位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.springbootdemo0117.dao" targetProject="src">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!--生成service,serviceImpl-->
+        <!--<javaServiceGenerator targetPackage="com.example.springbootdemo0117.service" targetProject="src"-->
+                              <!--implementationPackage="com.example.springbootdemo0117.service.iml">-->
+            <!--<property name="enableSubPackages" value="true"/>-->
+        <!--</javaServiceGenerator>-->
+
+        <!--&lt;!&ndash;生成controller&ndash;&gt;-->
+        <!--<javaControllerGenerator targetPackage="com.example.springbootdemo0117.controller" targetProject="src">-->
+            <!--<property name="superClass" value="com.example.springbootdemo0117.BaseController"></property>-->
+        <!--</javaControllerGenerator>-->
+
+        <!--生成对应表及类名,添加:enableInsertBatch(是否生成批量添加语句,目前只支持oracle),enableInsertBatchIgnore:批量添加语句中忽略的字段-->
+        <table tableName="t_certificate"
+               domainObjectName="Certificate"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"
+        >
+            <!--<property name="enableInsertBatchIgnore" value="createDt"></property>-->
+        </table>
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkyf.invoking.dao.ProjectMapper" >
+  <resultMap id="BaseResultMap" type="com.zkyf.invoking.model.Project" >
+    <id column="prj_no" property="prjNo" jdbcType="INTEGER" />
+    <result column="prj_uuid" property="prjUuid" jdbcType="VARCHAR" />
+    <result column="crt_stamp" property="crtStamp" jdbcType="TIMESTAMP" />
+    <result column="crt_no" property="crtNo" jdbcType="INTEGER" />
+    <result column="opr_stamp" property="oprStamp" jdbcType="TIMESTAMP" />
+    <result column="opr_no" property="oprNo" jdbcType="INTEGER" />
+    <result column="prj_removed" property="prjRemoved" jdbcType="INTEGER" />
+    <result column="prj_step" property="prjStep" jdbcType="INTEGER" />
+    <result column="prj_state" property="prjState" jdbcType="INTEGER" />
+    <result column="org_no" property="orgNo" jdbcType="INTEGER" />
+    <result column="prj_id" property="prjId" jdbcType="VARCHAR" />
+    <result column="prj_caption" property="prjCaption" jdbcType="VARCHAR" />
+    <result column="prj_alias" property="prjAlias" jdbcType="VARCHAR" />
+    <result column="prj_code" property="prjCode" jdbcType="VARCHAR" />
+    <result column="prj_introduction" property="prjIntroduction" jdbcType="VARCHAR" />
+    <result column="prj_category" property="prjCategory" jdbcType="INTEGER" />
+    <result column="prj_activitytype" property="prjActivitytype" jdbcType="INTEGER" />
+    <result column="prj_clientno" property="prjClientno" jdbcType="INTEGER" />
+    <result column="prj_clientid" property="prjClientid" jdbcType="VARCHAR" />
+    <result column="prj_clientcaption" property="prjClientcaption" jdbcType="VARCHAR" />
+    <result column="prj_clientbizcode" property="prjClientbizcode" jdbcType="VARCHAR" />
+    <result column="prj_buildno" property="prjBuildno" jdbcType="INTEGER" />
+    <result column="prj_buildid" property="prjBuildid" jdbcType="VARCHAR" />
+    <result column="prj_buildcaption" property="prjBuildcaption" jdbcType="VARCHAR" />
+    <result column="prj_buildbizcode" property="prjBuildbizcode" jdbcType="VARCHAR" />
+    <result column="prj_buildlicence" property="prjBuildlicence" jdbcType="VARCHAR" />
+    <result column="prj_important" property="prjImportant" jdbcType="INTEGER" />
+    <result column="prj_location" property="prjLocation" jdbcType="VARCHAR" />
+    <result column="ctr_money" property="ctrMoney" jdbcType="NUMERIC" />
+    <result column="prj_coveredarea" property="prjCoveredarea" jdbcType="NUMERIC" />
+    <result column="prj_startdate" property="prjStartdate" jdbcType="DATE" />
+    <result column="prj_enddate" property="prjEnddate" jdbcType="DATE" />
+    <result column="prj_source" property="prjSource" jdbcType="VARCHAR" />
+    <result column="prj_addressarea" property="prjAddressarea" jdbcType="VARCHAR" />
+    <result column="prj_address" property="prjAddress" jdbcType="VARCHAR" />
+    <result column="prj_phone" property="prjPhone" jdbcType="VARCHAR" />
+    <result column="prj_fax" property="prjFax" jdbcType="VARCHAR" />
+    <result column="prj_email" property="prjEmail" jdbcType="VARCHAR" />
+    <result column="prj_logo" property="prjLogo" jdbcType="VARCHAR" />
+    <result column="prj_costs" property="prjCosts" jdbcType="NUMERIC" />
+    <result column="bnk_id" property="bnkId" jdbcType="VARCHAR" />
+    <result column="bnk_caption" property="bnkCaption" jdbcType="VARCHAR" />
+    <result column="bnk_branch" property="bnkBranch" jdbcType="VARCHAR" />
+    <result column="bnk_account" property="bnkAccount" jdbcType="VARCHAR" />
+    <result column="pay_mode" property="payMode" jdbcType="INTEGER" />
+    <result column="lbr_no" property="lbrNo" jdbcType="INTEGER" />
+    <result column="lbr_duty" property="lbrDuty" jdbcType="VARCHAR" />
+    <result column="lbr_address" property="lbrAddress" jdbcType="VARCHAR" />
+    <result column="prj_uuidv1" property="prjUuidv1" jdbcType="VARCHAR" />
+    <result column="lbr_phone" property="lbrPhone" jdbcType="VARCHAR" />
+    <result column="lbr_mobile" property="lbrMobile" jdbcType="VARCHAR" />
+    <result column="lbr_email" property="lbrEmail" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    prj_no, prj_uuid, crt_stamp, crt_no, opr_stamp, opr_no, prj_removed, prj_step, prj_state, 
+    org_no, prj_id, prj_caption, prj_alias, prj_code, prj_introduction, prj_category, 
+    prj_activitytype, prj_clientno, prj_clientid, prj_clientcaption, prj_clientbizcode, 
+    prj_buildno, prj_buildid, prj_buildcaption, prj_buildbizcode, prj_buildlicence, prj_important, 
+    prj_location, ctr_money, prj_coveredarea, prj_startdate, prj_enddate, prj_source, 
+    prj_addressarea, prj_address, prj_phone, prj_fax, prj_email, prj_logo, prj_costs, 
+    bnk_id, bnk_caption, bnk_branch, bnk_account, pay_mode, lbr_no, lbr_duty, lbr_address, 
+    prj_uuidv1, lbr_phone, lbr_mobile, lbr_email
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_project
+    where prj_no = #{prjNo,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_project
+    where prj_no = #{prjNo,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zkyf.invoking.model.Project" >
+    insert into t_project (prj_no, prj_uuid, crt_stamp, 
+      crt_no, opr_stamp, opr_no, 
+      prj_removed, prj_step, prj_state, 
+      org_no, prj_id, prj_caption, 
+      prj_alias, prj_code, prj_introduction, 
+      prj_category, prj_activitytype, prj_clientno, 
+      prj_clientid, prj_clientcaption, prj_clientbizcode, 
+      prj_buildno, prj_buildid, prj_buildcaption, 
+      prj_buildbizcode, prj_buildlicence, prj_important, 
+      prj_location, ctr_money, prj_coveredarea, 
+      prj_startdate, prj_enddate, prj_source, 
+      prj_addressarea, prj_address, prj_phone, 
+      prj_fax, prj_email, prj_logo, 
+      prj_costs, bnk_id, bnk_caption, 
+      bnk_branch, bnk_account, pay_mode, 
+      lbr_no, lbr_duty, lbr_address, 
+      prj_uuidv1, lbr_phone, lbr_mobile, 
+      lbr_email)
+    values (#{prjNo,jdbcType=INTEGER}, #{prjUuid,jdbcType=VARCHAR}, #{crtStamp,jdbcType=TIMESTAMP}, 
+      #{crtNo,jdbcType=INTEGER}, #{oprStamp,jdbcType=TIMESTAMP}, #{oprNo,jdbcType=INTEGER}, 
+      #{prjRemoved,jdbcType=INTEGER}, #{prjStep,jdbcType=INTEGER}, #{prjState,jdbcType=INTEGER}, 
+      #{orgNo,jdbcType=INTEGER}, #{prjId,jdbcType=VARCHAR}, #{prjCaption,jdbcType=VARCHAR}, 
+      #{prjAlias,jdbcType=VARCHAR}, #{prjCode,jdbcType=VARCHAR}, #{prjIntroduction,jdbcType=VARCHAR}, 
+      #{prjCategory,jdbcType=INTEGER}, #{prjActivitytype,jdbcType=INTEGER}, #{prjClientno,jdbcType=INTEGER}, 
+      #{prjClientid,jdbcType=VARCHAR}, #{prjClientcaption,jdbcType=VARCHAR}, #{prjClientbizcode,jdbcType=VARCHAR}, 
+      #{prjBuildno,jdbcType=INTEGER}, #{prjBuildid,jdbcType=VARCHAR}, #{prjBuildcaption,jdbcType=VARCHAR}, 
+      #{prjBuildbizcode,jdbcType=VARCHAR}, #{prjBuildlicence,jdbcType=VARCHAR}, #{prjImportant,jdbcType=INTEGER}, 
+      #{prjLocation,jdbcType=VARCHAR}, #{ctrMoney,jdbcType=NUMERIC}, #{prjCoveredarea,jdbcType=NUMERIC}, 
+      #{prjStartdate,jdbcType=DATE}, #{prjEnddate,jdbcType=DATE}, #{prjSource,jdbcType=VARCHAR}, 
+      #{prjAddressarea,jdbcType=VARCHAR}, #{prjAddress,jdbcType=VARCHAR}, #{prjPhone,jdbcType=VARCHAR}, 
+      #{prjFax,jdbcType=VARCHAR}, #{prjEmail,jdbcType=VARCHAR}, #{prjLogo,jdbcType=VARCHAR}, 
+      #{prjCosts,jdbcType=NUMERIC}, #{bnkId,jdbcType=VARCHAR}, #{bnkCaption,jdbcType=VARCHAR}, 
+      #{bnkBranch,jdbcType=VARCHAR}, #{bnkAccount,jdbcType=VARCHAR}, #{payMode,jdbcType=INTEGER}, 
+      #{lbrNo,jdbcType=INTEGER}, #{lbrDuty,jdbcType=VARCHAR}, #{lbrAddress,jdbcType=VARCHAR}, 
+      #{prjUuidv1,jdbcType=VARCHAR}, #{lbrPhone,jdbcType=VARCHAR}, #{lbrMobile,jdbcType=VARCHAR}, 
+      #{lbrEmail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zkyf.invoking.model.Project" >
+    insert into t_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="prjNo != null" >
+        prj_no,
+      </if>
+      <if test="prjUuid != null" >
+        prj_uuid,
+      </if>
+      <if test="crtStamp != null" >
+        crt_stamp,
+      </if>
+      <if test="crtNo != null" >
+        crt_no,
+      </if>
+      <if test="oprStamp != null" >
+        opr_stamp,
+      </if>
+      <if test="oprNo != null" >
+        opr_no,
+      </if>
+      <if test="prjRemoved != null" >
+        prj_removed,
+      </if>
+      <if test="prjStep != null" >
+        prj_step,
+      </if>
+      <if test="prjState != null" >
+        prj_state,
+      </if>
+      <if test="orgNo != null" >
+        org_no,
+      </if>
+      <if test="prjId != null" >
+        prj_id,
+      </if>
+      <if test="prjCaption != null" >
+        prj_caption,
+      </if>
+      <if test="prjAlias != null" >
+        prj_alias,
+      </if>
+      <if test="prjCode != null" >
+        prj_code,
+      </if>
+      <if test="prjIntroduction != null" >
+        prj_introduction,
+      </if>
+      <if test="prjCategory != null" >
+        prj_category,
+      </if>
+      <if test="prjActivitytype != null" >
+        prj_activitytype,
+      </if>
+      <if test="prjClientno != null" >
+        prj_clientno,
+      </if>
+      <if test="prjClientid != null" >
+        prj_clientid,
+      </if>
+      <if test="prjClientcaption != null" >
+        prj_clientcaption,
+      </if>
+      <if test="prjClientbizcode != null" >
+        prj_clientbizcode,
+      </if>
+      <if test="prjBuildno != null" >
+        prj_buildno,
+      </if>
+      <if test="prjBuildid != null" >
+        prj_buildid,
+      </if>
+      <if test="prjBuildcaption != null" >
+        prj_buildcaption,
+      </if>
+      <if test="prjBuildbizcode != null" >
+        prj_buildbizcode,
+      </if>
+      <if test="prjBuildlicence != null" >
+        prj_buildlicence,
+      </if>
+      <if test="prjImportant != null" >
+        prj_important,
+      </if>
+      <if test="prjLocation != null" >
+        prj_location,
+      </if>
+      <if test="ctrMoney != null" >
+        ctr_money,
+      </if>
+      <if test="prjCoveredarea != null" >
+        prj_coveredarea,
+      </if>
+      <if test="prjStartdate != null" >
+        prj_startdate,
+      </if>
+      <if test="prjEnddate != null" >
+        prj_enddate,
+      </if>
+      <if test="prjSource != null" >
+        prj_source,
+      </if>
+      <if test="prjAddressarea != null" >
+        prj_addressarea,
+      </if>
+      <if test="prjAddress != null" >
+        prj_address,
+      </if>
+      <if test="prjPhone != null" >
+        prj_phone,
+      </if>
+      <if test="prjFax != null" >
+        prj_fax,
+      </if>
+      <if test="prjEmail != null" >
+        prj_email,
+      </if>
+      <if test="prjLogo != null" >
+        prj_logo,
+      </if>
+      <if test="prjCosts != null" >
+        prj_costs,
+      </if>
+      <if test="bnkId != null" >
+        bnk_id,
+      </if>
+      <if test="bnkCaption != null" >
+        bnk_caption,
+      </if>
+      <if test="bnkBranch != null" >
+        bnk_branch,
+      </if>
+      <if test="bnkAccount != null" >
+        bnk_account,
+      </if>
+      <if test="payMode != null" >
+        pay_mode,
+      </if>
+      <if test="lbrNo != null" >
+        lbr_no,
+      </if>
+      <if test="lbrDuty != null" >
+        lbr_duty,
+      </if>
+      <if test="lbrAddress != null" >
+        lbr_address,
+      </if>
+      <if test="prjUuidv1 != null" >
+        prj_uuidv1,
+      </if>
+      <if test="lbrPhone != null" >
+        lbr_phone,
+      </if>
+      <if test="lbrMobile != null" >
+        lbr_mobile,
+      </if>
+      <if test="lbrEmail != null" >
+        lbr_email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="prjNo != null" >
+        #{prjNo,jdbcType=INTEGER},
+      </if>
+      <if test="prjUuid != null" >
+        #{prjUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="crtStamp != null" >
+        #{crtStamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtNo != null" >
+        #{crtNo,jdbcType=INTEGER},
+      </if>
+      <if test="oprStamp != null" >
+        #{oprStamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oprNo != null" >
+        #{oprNo,jdbcType=INTEGER},
+      </if>
+      <if test="prjRemoved != null" >
+        #{prjRemoved,jdbcType=INTEGER},
+      </if>
+      <if test="prjStep != null" >
+        #{prjStep,jdbcType=INTEGER},
+      </if>
+      <if test="prjState != null" >
+        #{prjState,jdbcType=INTEGER},
+      </if>
+      <if test="orgNo != null" >
+        #{orgNo,jdbcType=INTEGER},
+      </if>
+      <if test="prjId != null" >
+        #{prjId,jdbcType=VARCHAR},
+      </if>
+      <if test="prjCaption != null" >
+        #{prjCaption,jdbcType=VARCHAR},
+      </if>
+      <if test="prjAlias != null" >
+        #{prjAlias,jdbcType=VARCHAR},
+      </if>
+      <if test="prjCode != null" >
+        #{prjCode,jdbcType=VARCHAR},
+      </if>
+      <if test="prjIntroduction != null" >
+        #{prjIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="prjCategory != null" >
+        #{prjCategory,jdbcType=INTEGER},
+      </if>
+      <if test="prjActivitytype != null" >
+        #{prjActivitytype,jdbcType=INTEGER},
+      </if>
+      <if test="prjClientno != null" >
+        #{prjClientno,jdbcType=INTEGER},
+      </if>
+      <if test="prjClientid != null" >
+        #{prjClientid,jdbcType=VARCHAR},
+      </if>
+      <if test="prjClientcaption != null" >
+        #{prjClientcaption,jdbcType=VARCHAR},
+      </if>
+      <if test="prjClientbizcode != null" >
+        #{prjClientbizcode,jdbcType=VARCHAR},
+      </if>
+      <if test="prjBuildno != null" >
+        #{prjBuildno,jdbcType=INTEGER},
+      </if>
+      <if test="prjBuildid != null" >
+        #{prjBuildid,jdbcType=VARCHAR},
+      </if>
+      <if test="prjBuildcaption != null" >
+        #{prjBuildcaption,jdbcType=VARCHAR},
+      </if>
+      <if test="prjBuildbizcode != null" >
+        #{prjBuildbizcode,jdbcType=VARCHAR},
+      </if>
+      <if test="prjBuildlicence != null" >
+        #{prjBuildlicence,jdbcType=VARCHAR},
+      </if>
+      <if test="prjImportant != null" >
+        #{prjImportant,jdbcType=INTEGER},
+      </if>
+      <if test="prjLocation != null" >
+        #{prjLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="ctrMoney != null" >
+        #{ctrMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="prjCoveredarea != null" >
+        #{prjCoveredarea,jdbcType=NUMERIC},
+      </if>
+      <if test="prjStartdate != null" >
+        #{prjStartdate,jdbcType=DATE},
+      </if>
+      <if test="prjEnddate != null" >
+        #{prjEnddate,jdbcType=DATE},
+      </if>
+      <if test="prjSource != null" >
+        #{prjSource,jdbcType=VARCHAR},
+      </if>
+      <if test="prjAddressarea != null" >
+        #{prjAddressarea,jdbcType=VARCHAR},
+      </if>
+      <if test="prjAddress != null" >
+        #{prjAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="prjPhone != null" >
+        #{prjPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="prjFax != null" >
+        #{prjFax,jdbcType=VARCHAR},
+      </if>
+      <if test="prjEmail != null" >
+        #{prjEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="prjLogo != null" >
+        #{prjLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="prjCosts != null" >
+        #{prjCosts,jdbcType=NUMERIC},
+      </if>
+      <if test="bnkId != null" >
+        #{bnkId,jdbcType=VARCHAR},
+      </if>
+      <if test="bnkCaption != null" >
+        #{bnkCaption,jdbcType=VARCHAR},
+      </if>
+      <if test="bnkBranch != null" >
+        #{bnkBranch,jdbcType=VARCHAR},
+      </if>
+      <if test="bnkAccount != null" >
+        #{bnkAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="payMode != null" >
+        #{payMode,jdbcType=INTEGER},
+      </if>
+      <if test="lbrNo != null" >
+        #{lbrNo,jdbcType=INTEGER},
+      </if>
+      <if test="lbrDuty != null" >
+        #{lbrDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="lbrAddress != null" >
+        #{lbrAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="prjUuidv1 != null" >
+        #{prjUuidv1,jdbcType=VARCHAR},
+      </if>
+      <if test="lbrPhone != null" >
+        #{lbrPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="lbrMobile != null" >
+        #{lbrMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="lbrEmail != null" >
+        #{lbrEmail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zkyf.invoking.model.Project" >
+    update t_project
+    <set >
+      <if test="prjUuid != null" >
+        prj_uuid = #{prjUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="crtStamp != null" >
+        crt_stamp = #{crtStamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtNo != null" >
+        crt_no = #{crtNo,jdbcType=INTEGER},
+      </if>
+      <if test="oprStamp != null" >
+        opr_stamp = #{oprStamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oprNo != null" >
+        opr_no = #{oprNo,jdbcType=INTEGER},
+      </if>
+      <if test="prjRemoved != null" >
+        prj_removed = #{prjRemoved,jdbcType=INTEGER},
+      </if>
+      <if test="prjStep != null" >
+        prj_step = #{prjStep,jdbcType=INTEGER},
+      </if>
+      <if test="prjState != null" >
+        prj_state = #{prjState,jdbcType=INTEGER},
+      </if>
+      <if test="orgNo != null" >
+        org_no = #{orgNo,jdbcType=INTEGER},
+      </if>
+      <if test="prjId != null" >
+        prj_id = #{prjId,jdbcType=VARCHAR},
+      </if>
+      <if test="prjCaption != null" >
+        prj_caption = #{prjCaption,jdbcType=VARCHAR},
+      </if>
+      <if test="prjAlias != null" >
+        prj_alias = #{prjAlias,jdbcType=VARCHAR},
+      </if>
+      <if test="prjCode != null" >
+        prj_code = #{prjCode,jdbcType=VARCHAR},
+      </if>
+      <if test="prjIntroduction != null" >
+        prj_introduction = #{prjIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="prjCategory != null" >
+        prj_category = #{prjCategory,jdbcType=INTEGER},
+      </if>
+      <if test="prjActivitytype != null" >
+        prj_activitytype = #{prjActivitytype,jdbcType=INTEGER},
+      </if>
+      <if test="prjClientno != null" >
+        prj_clientno = #{prjClientno,jdbcType=INTEGER},
+      </if>
+      <if test="prjClientid != null" >
+        prj_clientid = #{prjClientid,jdbcType=VARCHAR},
+      </if>
+      <if test="prjClientcaption != null" >
+        prj_clientcaption = #{prjClientcaption,jdbcType=VARCHAR},
+      </if>
+      <if test="prjClientbizcode != null" >
+        prj_clientbizcode = #{prjClientbizcode,jdbcType=VARCHAR},
+      </if>
+      <if test="prjBuildno != null" >
+        prj_buildno = #{prjBuildno,jdbcType=INTEGER},
+      </if>
+      <if test="prjBuildid != null" >
+        prj_buildid = #{prjBuildid,jdbcType=VARCHAR},
+      </if>
+      <if test="prjBuildcaption != null" >
+        prj_buildcaption = #{prjBuildcaption,jdbcType=VARCHAR},
+      </if>
+      <if test="prjBuildbizcode != null" >
+        prj_buildbizcode = #{prjBuildbizcode,jdbcType=VARCHAR},
+      </if>
+      <if test="prjBuildlicence != null" >
+        prj_buildlicence = #{prjBuildlicence,jdbcType=VARCHAR},
+      </if>
+      <if test="prjImportant != null" >
+        prj_important = #{prjImportant,jdbcType=INTEGER},
+      </if>
+      <if test="prjLocation != null" >
+        prj_location = #{prjLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="ctrMoney != null" >
+        ctr_money = #{ctrMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="prjCoveredarea != null" >
+        prj_coveredarea = #{prjCoveredarea,jdbcType=NUMERIC},
+      </if>
+      <if test="prjStartdate != null" >
+        prj_startdate = #{prjStartdate,jdbcType=DATE},
+      </if>
+      <if test="prjEnddate != null" >
+        prj_enddate = #{prjEnddate,jdbcType=DATE},
+      </if>
+      <if test="prjSource != null" >
+        prj_source = #{prjSource,jdbcType=VARCHAR},
+      </if>
+      <if test="prjAddressarea != null" >
+        prj_addressarea = #{prjAddressarea,jdbcType=VARCHAR},
+      </if>
+      <if test="prjAddress != null" >
+        prj_address = #{prjAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="prjPhone != null" >
+        prj_phone = #{prjPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="prjFax != null" >
+        prj_fax = #{prjFax,jdbcType=VARCHAR},
+      </if>
+      <if test="prjEmail != null" >
+        prj_email = #{prjEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="prjLogo != null" >
+        prj_logo = #{prjLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="prjCosts != null" >
+        prj_costs = #{prjCosts,jdbcType=NUMERIC},
+      </if>
+      <if test="bnkId != null" >
+        bnk_id = #{bnkId,jdbcType=VARCHAR},
+      </if>
+      <if test="bnkCaption != null" >
+        bnk_caption = #{bnkCaption,jdbcType=VARCHAR},
+      </if>
+      <if test="bnkBranch != null" >
+        bnk_branch = #{bnkBranch,jdbcType=VARCHAR},
+      </if>
+      <if test="bnkAccount != null" >
+        bnk_account = #{bnkAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="payMode != null" >
+        pay_mode = #{payMode,jdbcType=INTEGER},
+      </if>
+      <if test="lbrNo != null" >
+        lbr_no = #{lbrNo,jdbcType=INTEGER},
+      </if>
+      <if test="lbrDuty != null" >
+        lbr_duty = #{lbrDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="lbrAddress != null" >
+        lbr_address = #{lbrAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="prjUuidv1 != null" >
+        prj_uuidv1 = #{prjUuidv1,jdbcType=VARCHAR},
+      </if>
+      <if test="lbrPhone != null" >
+        lbr_phone = #{lbrPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="lbrMobile != null" >
+        lbr_mobile = #{lbrMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="lbrEmail != null" >
+        lbr_email = #{lbrEmail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where prj_no = #{prjNo,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zkyf.invoking.model.Project" >
+    update t_project
+    set prj_uuid = #{prjUuid,jdbcType=VARCHAR},
+      crt_stamp = #{crtStamp,jdbcType=TIMESTAMP},
+      crt_no = #{crtNo,jdbcType=INTEGER},
+      opr_stamp = #{oprStamp,jdbcType=TIMESTAMP},
+      opr_no = #{oprNo,jdbcType=INTEGER},
+      prj_removed = #{prjRemoved,jdbcType=INTEGER},
+      prj_step = #{prjStep,jdbcType=INTEGER},
+      prj_state = #{prjState,jdbcType=INTEGER},
+      org_no = #{orgNo,jdbcType=INTEGER},
+      prj_id = #{prjId,jdbcType=VARCHAR},
+      prj_caption = #{prjCaption,jdbcType=VARCHAR},
+      prj_alias = #{prjAlias,jdbcType=VARCHAR},
+      prj_code = #{prjCode,jdbcType=VARCHAR},
+      prj_introduction = #{prjIntroduction,jdbcType=VARCHAR},
+      prj_category = #{prjCategory,jdbcType=INTEGER},
+      prj_activitytype = #{prjActivitytype,jdbcType=INTEGER},
+      prj_clientno = #{prjClientno,jdbcType=INTEGER},
+      prj_clientid = #{prjClientid,jdbcType=VARCHAR},
+      prj_clientcaption = #{prjClientcaption,jdbcType=VARCHAR},
+      prj_clientbizcode = #{prjClientbizcode,jdbcType=VARCHAR},
+      prj_buildno = #{prjBuildno,jdbcType=INTEGER},
+      prj_buildid = #{prjBuildid,jdbcType=VARCHAR},
+      prj_buildcaption = #{prjBuildcaption,jdbcType=VARCHAR},
+      prj_buildbizcode = #{prjBuildbizcode,jdbcType=VARCHAR},
+      prj_buildlicence = #{prjBuildlicence,jdbcType=VARCHAR},
+      prj_important = #{prjImportant,jdbcType=INTEGER},
+      prj_location = #{prjLocation,jdbcType=VARCHAR},
+      ctr_money = #{ctrMoney,jdbcType=NUMERIC},
+      prj_coveredarea = #{prjCoveredarea,jdbcType=NUMERIC},
+      prj_startdate = #{prjStartdate,jdbcType=DATE},
+      prj_enddate = #{prjEnddate,jdbcType=DATE},
+      prj_source = #{prjSource,jdbcType=VARCHAR},
+      prj_addressarea = #{prjAddressarea,jdbcType=VARCHAR},
+      prj_address = #{prjAddress,jdbcType=VARCHAR},
+      prj_phone = #{prjPhone,jdbcType=VARCHAR},
+      prj_fax = #{prjFax,jdbcType=VARCHAR},
+      prj_email = #{prjEmail,jdbcType=VARCHAR},
+      prj_logo = #{prjLogo,jdbcType=VARCHAR},
+      prj_costs = #{prjCosts,jdbcType=NUMERIC},
+      bnk_id = #{bnkId,jdbcType=VARCHAR},
+      bnk_caption = #{bnkCaption,jdbcType=VARCHAR},
+      bnk_branch = #{bnkBranch,jdbcType=VARCHAR},
+      bnk_account = #{bnkAccount,jdbcType=VARCHAR},
+      pay_mode = #{payMode,jdbcType=INTEGER},
+      lbr_no = #{lbrNo,jdbcType=INTEGER},
+      lbr_duty = #{lbrDuty,jdbcType=VARCHAR},
+      lbr_address = #{lbrAddress,jdbcType=VARCHAR},
+      prj_uuidv1 = #{prjUuidv1,jdbcType=VARCHAR},
+      lbr_phone = #{lbrPhone,jdbcType=VARCHAR},
+      lbr_mobile = #{lbrMobile,jdbcType=VARCHAR},
+      lbr_email = #{lbrEmail,jdbcType=VARCHAR}
+    where prj_no = #{prjNo,jdbcType=INTEGER}
+  </update>
+</mapper>
