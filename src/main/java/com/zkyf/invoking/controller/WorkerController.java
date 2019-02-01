@@ -13,7 +13,6 @@ import java.util.List;
 @RestController
 public class WorkerController {
 
-
     @PostMapping("worker_acquit")
     public ParamResponse acquit(@RequestBody RequestEntity entity) {
         List<Object> params = new ArrayList<>();
