@@ -16,7 +16,7 @@
 
   </select>
   <select id="loadby" resultType="java.util.Map">
-    select  *
+    select  rec_count , (row_data).*
     from ${function}(
     <foreach collection="paramList" item="item"  separator="," >
       #{item}

@@ -89,10 +89,10 @@ public class ReqInterceptor implements HandlerInterceptor {
                                         page.setAllpage((rec_count / ofpage));
                                         List<Object> reccount = new ArrayList<>();
                                         loadby.forEach(o ->{
-                                            Object row =  o.get("row_data"); // TODO: 2019/2/1 decode
-
-                                            Map object1 = JSONObject.fromObject(row);
-                                            Map map = MapFormat.formatHumpName(object1);
+//                                            Object row =  o.get("row_data"); // TODO: 2019/2/1 decode
+                                            o.remove("rec_count");
+//                                            Map object1 = JSONObject.fromObject(o);
+                                            Map map = MapFormat.formatHumpName(o);
                                             reccount.add(map);
 
                                         });
@@ -122,14 +122,14 @@ public class ReqInterceptor implements HandlerInterceptor {
                         response.setContentType("application/json; charset=utf-8");
                         PrintWriter writer = response.getWriter();
                         String resultJson = com.alibaba.fastjson.JSONObject.toJSONString(responseUtil);
-                        writer.write(resultJson);
+                        writer.print(resultJson);
                         writer.close();
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            return true;
+            return Boolean.parseBoolean(null);
         } else {
 
             return true;
